@@ -1,0 +1,18 @@
+# oprofile-example build targets
+oprofile-example:
+	@echo =============================
+	@echo    Building OProfile Example
+	@echo =============================
+	$(MAKE) -C $(OPROFILE_SRC_DIR) CC="$(CC)"
+
+oprofile-example_clean:
+	@echo =============================
+	@echo    Cleaning OProfile Example
+	@echo =============================
+	$(MAKE) -C $(OPROFILE_SRC_DIR) clean
+
+oprofile-example_install:
+	@echo =============================================
+	@echo     Installing OProfile Example - Debug version
+	@echo =============================================
+	$(MAKE) -C $(OPROFILE_SRC_DIR) install

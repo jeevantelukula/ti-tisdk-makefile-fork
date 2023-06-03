@@ -19,4 +19,4 @@ endif
 
 KERNEL_DEVICETREE ?= ti/k3-j7200-common-proc-board.dtb     ti/k3-j7200-mcspi-loopback.dtbo	ti/k3-j7200-quad-port-eth-exp.dtbo
 
-MAKE_ALL_TARGETS = arm-benchmarks am-sysinfo oprofile-example cryptodev u-boot-spl-jacinto sysfw-image-jacinto linux-jacinto linux-dtbs-jacinto
+MAKE_ALL_TARGETS = arm-benchmarks am-sysinfo oprofile-example cryptodev u-boot sysfw-image linux linux-dtbs
