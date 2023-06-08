@@ -25,12 +25,12 @@ cd $TI_SDK_PATH
 
 ### Create Rules.Make
 echo "" > Rules.make
-echo "### PLATFORM CONFIG ###" >>  Rules.make
-cat $BASEDIR/configs/platforms/$platform.mk >> Rules.make
-echo "### TI SDK CONFIG ###" >>  Rules.make
-cat $BASEDIR/configs/setup/tisdk-installer.mk >> Rules.make
 echo "### COMMON CONFIG ###" >>  Rules.make
 cat $BASEDIR/configs/common.mk >> Rules.make
+echo "### TI SDK CONFIG ###" >>  Rules.make
+cat $BASEDIR/configs/setup/tisdk-installer.mk >> Rules.make
+echo "### PLATFORM CONFIG ###" >>  Rules.make
+cat $BASEDIR/configs/platforms/$platform.mk >> Rules.make
 
 ### Copy Top Level Makefile
 cp $BASEDIR/Makefile ./

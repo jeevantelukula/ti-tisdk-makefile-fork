@@ -1,5 +1,5 @@
 #Points to the root of the TI SDK
-export TI_SDK_PATH=__TI_SDK_PATH__
+export TI_SDK_PATH?=__SDK__INSTALL_DIR__
 
 export LINUX_DEVKIT_PATH=$(TI_SDK_PATH)/linux-devkit
 SDK_PATH_TARGET=$(LINUX_DEVKIT_PATH)/sysroots/aarch64-linux/

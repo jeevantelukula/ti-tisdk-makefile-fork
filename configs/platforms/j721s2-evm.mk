@@ -5,6 +5,8 @@ SOC_TYPE?=gp
 #defconfig
 DEFCONFIG=tisdk_j721s2-evm_defconfig
 
+ARCH=aarch64
+
 #u-boot machine
 UBOOT_MACHINE=j721s2_evm_a72_defconfig
 

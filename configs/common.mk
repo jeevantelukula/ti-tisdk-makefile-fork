@@ -1,9 +1,7 @@
-ARCH=aarch64
-
-CFLAGS=
+CFLAGS?=
 
 #Strip modules when installing to conserve disk space
-INSTALL_MOD_STRIP=1
+INSTALL_MOD_STRIP?=1
 
 # Set EXEC_DIR to install example binaries.
 # This will be configured with the setup.sh script.
