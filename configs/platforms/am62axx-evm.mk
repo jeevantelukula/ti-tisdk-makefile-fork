@@ -1,9 +1,6 @@
 #platform
 SOC=am62a
 
-#defconfig
-DEFCONFIG=tisdk_am62axx-evm_defconfig
-
 ARCH=aarch64
 
 #u-boot machine

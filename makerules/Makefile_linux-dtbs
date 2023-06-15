@@ -3,7 +3,7 @@ linux-dtbs:
 	@echo =====================================
 	@echo     Building the Linux Kernel DTBs
 	@echo =====================================
-	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) $(DEFCONFIG)
+	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) defconfig ti_arm64_prune.config
 	@for DTB in $(KERNEL_DEVICETREE); do \
 		$(MAKE) -j $(MAKE_JOBS) -C $(LINUXKERNEL_INSTALL_DIR) DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) $$DTB; \
 	done

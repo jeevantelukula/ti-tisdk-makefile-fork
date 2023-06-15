@@ -2,9 +2,6 @@
 SOC=j7200
 SOC_TYPE?=gp
 
-#defconfig
-DEFCONFIG=tisdk_j7200-evm_defconfig
-
 ARCH=aarch64
 
 #u-boot machine

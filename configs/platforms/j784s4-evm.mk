@@ -2,9 +2,6 @@
 SOC=j784s4
 SOC_TYPE?=gp
 
-#defconfig
-DEFCONFIG=tisdk_j784s4-evm_defconfig
-
 ARCH=aarch64
 
 #u-boot machine

@@ -2,9 +2,6 @@
 SOC=j721e
 SOC_TYPE?=gp
 
-#defconfig
-DEFCONFIG=tisdk_j7-evm_defconfig
-
 ARCH=aarch64
 
 #u-boot machine
