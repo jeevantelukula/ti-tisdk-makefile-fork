@@ -1,6 +1,9 @@
 #platform
 SOC=am62a
 
+#add platform for scripts
+PLATFORM=am62axx-evm
+
 ARCH=aarch64
 
 #u-boot machine

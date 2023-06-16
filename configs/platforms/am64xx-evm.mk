@@ -2,6 +2,9 @@
 SOC=am64
 SOC_TYPE?=hs-fs
 
+#add platform for scripts
+PLATFORM=am64xx-evm
+
 #defconfig
 DEFCONFIG=tisdk_am64xx-evm_defconfig
 
