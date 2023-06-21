@@ -3,8 +3,8 @@ export TI_SDK_PATH?=__SDK__INSTALL_DIR__
 
 export LINUX_DEVKIT_PATH=$(TI_SDK_PATH)/linux-devkit
 SDK_PATH_TARGET=$(LINUX_DEVKIT_PATH)/sysroots/aarch64-linux/
-export CROSS_COMPILE=$(LINUX_DEVKIT_PATH)/sysroots/x86_64-arago-linux/usr/bin/aarch64-none-linux-gnu-
-export CROSS_COMPILE_ARMV7=$(LINUX_DEVKIT_PATH)/sysroots/x86_64-arago-linux/usr/bin/arm-none-linux-gnueabihf-
+export CROSS_COMPILE=$(TI_SDK_PATH)/external-toolchain-dir/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
+export CROSS_COMPILE_ARMV7=$(TI_SDK_PATH)/external-toolchain-dir/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf/bin/arm-none-linux-gnueabihf-
 
 #Default CC value to be used when cross compiling.  This is so that the
 #GNU Make default of "cc" is not used to point to the host compiler
