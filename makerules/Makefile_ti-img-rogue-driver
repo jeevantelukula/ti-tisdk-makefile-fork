@@ -4,13 +4,13 @@ ti-img-rogue-driver: linux
 	@echo =====================================
 	@echo     Building ti-img-rogue-driver
 	@echo =====================================
-	$(MAKE) -C $(IMG_ROGUE_SRC_DIR) ARCH=__KERNEL_ARCH__ KERNELDIR=${LINUXKERNEL_INSTALL_DIR} RGX_BVNC=${RGX_BVNC} BUILD=release PVR_BUILD_DIR=${PVR_BUILD_DIR} WINDOW_SYSTEM=${WINDOW_SYSTEM}
+	$(MAKE) -C $(IMG_ROGUE_SRC_DIR) ARCH=arm64 KERNELDIR=${LINUXKERNEL_INSTALL_DIR} RGX_BVNC=${RGX_BVNC} BUILD=release PVR_BUILD_DIR=${PVR_BUILD_DIR} WINDOW_SYSTEM=${WINDOW_SYSTEM}
 
 ti-img-rogue-driver_clean:
 	@echo ====================================
 	@echo     Cleaning ti-img-rogue-driver
 	@echo ====================================
-	$(MAKE) -C $(IMG_ROGUE_SRC_DIR) ARCH=__KERNEL_ARCH__ KERNELDIR=${LINUXKERNEL_INSTALL_DIR} RGX_BVNC=${RGX_BVNC} BUILD=release PVR_BUILD_DIR=${PVR_BUILD_DIR} WINDOW_SYSTEM=${WINDOW_SYSTEM} clean
+	$(MAKE) -C $(IMG_ROGUE_SRC_DIR) ARCH=arm64 KERNELDIR=${LINUXKERNEL_INSTALL_DIR} RGX_BVNC=${RGX_BVNC} BUILD=release PVR_BUILD_DIR=${PVR_BUILD_DIR} WINDOW_SYSTEM=${WINDOW_SYSTEM} clean
 
 ti-img-rogue-driver_install:
 	@echo ====================================

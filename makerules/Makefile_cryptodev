@@ -2,13 +2,13 @@ cryptodev: linux
 	@echo ================================
 	@echo      Building cryptodev-linux
 	@echo ================================
-	$(MAKE) -C $(CRYPTODEV_SRC_DIR) ARCH=__KERNEL_ARCH__ KERNEL_DIR=$(LINUXKERNEL_INSTALL_DIR)
+	$(MAKE) -C $(CRYPTODEV_SRC_DIR) ARCH=arm64 KERNEL_DIR=$(LINUXKERNEL_INSTALL_DIR)
 
 cryptodev_clean:
 	@echo ================================
 	@echo      Cleaning cryptodev-linux
 	@echo ================================
-	$(MAKE) -C $(CRYPTODEV_SRC_DIR) ARCH=__KERNEL_ARCH__ KERNEL_DIR=$(LINUXKERNEL_INSTALL_DIR) clean
+	$(MAKE) -C $(CRYPTODEV_SRC_DIR) ARCH=arm64 KERNEL_DIR=$(LINUXKERNEL_INSTALL_DIR) clean
 
 cryptodev_install:
 	@echo ================================
@@ -19,4 +19,4 @@ cryptodev_install:
 		echo "Please run setup.sh in the SDK's root directory and then try again."; \
 		exit 1; \
 	fi
-	$(MAKE) -C $(CRYPTODEV_SRC_DIR) ARCH=__KERNEL_ARCH__  KERNEL_DIR=$(LINUXKERNEL_INSTALL_DIR)  INSTALL_MOD_PATH=$(DESTDIR) PREFIX=$(SDK_PATH_TARGET) INSTALL_MOD_STRIP=$(INSTALL_MOD_STRIP) install
+	$(MAKE) -C $(CRYPTODEV_SRC_DIR) ARCH=arm64  KERNEL_DIR=$(LINUXKERNEL_INSTALL_DIR)  INSTALL_MOD_PATH=$(DESTDIR) PREFIX=$(SDK_PATH_TARGET) INSTALL_MOD_STRIP=$(INSTALL_MOD_STRIP) install
