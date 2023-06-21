@@ -9,14 +9,14 @@ linux: linux-dtbs
 
 linux_stage: linux-dtbs_stage
 	mkdir -p $(TI_SDK_PATH)/board-support/built-images
-ifneq ($(SOC_TYPE),gp)
-	$(TI_SECURE_DEV_PKG)/scripts/secure-binary-image.sh $(LINUXKERNEL_INSTALL_DIR)/arch/arm64/boot/Image $(TI_SDK_PATH)/board-support/built-images/Image.sec
-	cp $(TI_SDK_PATH)/board-support/prebuilt-images/fitImage.its $(TI_SDK_PATH)/board-support/built-images
-	cd $(TI_SDK_PATH)/board-support/built-images; \
-	mkimage -f fitImage.its -r fitImage
-else
+# ifneq ($(SOC_TYPE),gp)
+# 	$(TI_SECURE_DEV_PKG)/scripts/secure-binary-image.sh $(LINUXKERNEL_INSTALL_DIR)/arch/arm64/boot/Image $(TI_SDK_PATH)/board-support/built-images/Image.sec
+# 	cp $(TI_SDK_PATH)/board-support/prebuilt-images/fitImage.its $(TI_SDK_PATH)/board-support/built-images
+# 	cd $(TI_SDK_PATH)/board-support/built-images; \
+# 	mkimage -f fitImage.its -r fitImage
+# else
 	cp $(LINUXKERNEL_INSTALL_DIR)/arch/arm64/boot/Image $(TI_SDK_PATH)/board-support/built-images
-endif
+# endif
 
 linux_install: linux_stage linux-dtbs_install
 	@echo ===================================
@@ -28,11 +28,11 @@ linux_install: linux_stage linux-dtbs_install
 		exit 1; \
 	fi
 	install -d $(DESTDIR)/boot
-ifneq ($(SOC_TYPE),gp)
-	install $(TI_SDK_PATH)/board-support/built-images/fitImage $(DESTDIR)/boot
-else
+# ifneq ($(SOC_TYPE),gp)
+# 	install $(TI_SDK_PATH)/board-support/built-images/fitImage $(DESTDIR)/boot
+# else
 	install $(TI_SDK_PATH)/board-support/built-images/Image $(DESTDIR)/boot
-endif
+# endif
 	install $(LINUXKERNEL_INSTALL_DIR)/vmlinux $(DESTDIR)/boot
 	install $(LINUXKERNEL_INSTALL_DIR)/System.map $(DESTDIR)/boot
 	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) INSTALL_MOD_PATH=$(DESTDIR) INSTALL_MOD_STRIP=$(INSTALL_MOD_STRIP) modules_install
