@@ -17,4 +17,6 @@ UBOOT_MACHINE_R5=am64x_evm_r5_defconfig
 
 KERNEL_DEVICETREE?= ti/k3-am642-evm.dtb ti/k3-am642-evm-icssg1-dualemac.dtbo ti/k3-am642-evm-icssg1-dualemac-mii.dtbo ti/k3-am642-sk.dtb
 
+TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)
+
 MAKE_ALL_TARGETS?= arm-benchmarks am-sysinfo oprofile-example cryptodev u-boot linux linux-dtbs

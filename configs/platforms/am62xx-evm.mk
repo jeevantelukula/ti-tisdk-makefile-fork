@@ -23,6 +23,8 @@ endif
 
 KERNEL_DEVICETREE?= ti/k3-am625-beagleplay.dtb ti/k3-am625-sk-csi2-ov5640.dtbo ti/k3-am625-sk-csi2-tevi-ov5640.dtbo ti/k3-am625-sk.dtb ti/k3-am625-sk-hdmi-audio.dtbo ti/k3-am625-sk-lpmdemo.dtb ti/k3-am625-sk-mcan.dtbo ti/k3-am625-sk-microtips-mf101hie-panel.dtbo
 
+TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)
+
 # Add configs for ti-img-rogue-driver
 PVR_BUILD_DIR=am62_linux
 RGX_BVNC="22.104.208.318"
