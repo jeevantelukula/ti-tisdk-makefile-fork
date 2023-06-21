@@ -1,6 +1,5 @@
 #platform
 SOC=am62
-SOC_TYPE?=hs-fs
 
 #add platform for scripts
 PLATFORM=am62xx-evm
