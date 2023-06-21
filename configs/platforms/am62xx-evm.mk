@@ -27,7 +27,7 @@ UBOOT_TEE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl32.bin
 
 # Add configs for ti-img-rogue-driver
 PVR_BUILD_DIR=am62_linux
-RGX_BVNC="22.104.208.318"
+RGX_BVNC="33.15.11.3"
 WINDOW_SYSTEM=wayland
 
 MAKE_ALL_TARGETS?= arm-benchmarks am-sysinfo oprofile-example cryptodev u-boot linux linux-dtbs ti-img-rogue-driver
