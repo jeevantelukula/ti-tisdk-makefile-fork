@@ -20,4 +20,4 @@ UBOOT_ATF=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl31.bin
 UBOOT_TEE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl32.bin
 
 
-MAKE_ALL_TARGETS?= arm-benchmarks am-sysinfo oprofile-example pru-icss matrix-gui cryptodev u-boot linux linux-dtbs
+MAKE_ALL_TARGETS?= arm-benchmarks oprofile-example pru-icss matrix-gui cryptodev u-boot linux linux-dtbs
