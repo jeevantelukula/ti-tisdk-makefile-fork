@@ -10,11 +10,20 @@ case $1 in
     --sdk=*)
         TI_SDK_PATH="${1#*=}"
         ;;
+	--rt=*)
+		RT="${1#*=}"
+		;;
 esac
 shift
 done
 
-if [ -z $platform ] || [ ! -f $BASEDIR/configs/platforms/$platform.mk ] ; then
+# check whether to build for rt or non rt
+
+if [ ! -z $RT ] && [ $RT -eq 1 ]; then
+	suffix="-rt"
+fi
+
+if [ -z $platform ] || [ ! -f $BASEDIR/configs/platforms/$platform$suffix.mk ] ; then
     echo "Error: invalid platform"
     exit 1
 fi
@@ -30,7 +39,7 @@ cat $BASEDIR/configs/common.mk >> Rules.make
 echo "### TI SDK CONFIG ###" >>  Rules.make
 cat $BASEDIR/configs/setup/tisdk-installer.mk >> Rules.make
 echo "### PLATFORM CONFIG ###" >>  Rules.make
-cat $BASEDIR/configs/platforms/$platform.mk >> Rules.make
+cat $BASEDIR/configs/platforms/$platform$suffix.mk >> Rules.make
 
 ### Copy Top Level Makefile
 cp $BASEDIR/Makefile ./
@@ -38,7 +47,7 @@ cp $BASEDIR/Makefile ./
 ## Add all required makerule files
 # cp -r $BASEDIR/makerules ./
 mkdir -p makerules
-COMPONENTS_LIST=$(sed -n "s|MAKE_ALL_TARGETS?=||p" $BASEDIR/configs/platforms/$platform.mk)
+COMPONENTS_LIST=$(sed -n "s|MAKE_ALL_TARGETS?=||p" $BASEDIR/configs/platforms/$platform$suffix.mk)
 for comp in $COMPONENTS_LIST;
 do
     echo $comp
