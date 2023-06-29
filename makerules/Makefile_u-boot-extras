@@ -1,0 +1,61 @@
+
+u-boot-extras: u-boot-extras-a53 u-boot-extras-r5
+
+u-boot-extras_clean: u-boot-extras-a53_clean u-boot-extras-r5_clean
+
+u-boot-extras-a53:
+	@echo ===================================
+	@echo    Building U-boot for A53
+	@echo ===================================
+	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOTEXTRAS_SRC_DIR) ARCH=arm $(UBOOT_MACHINE)
+	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOTEXTRAS_SRC_DIR) ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE) \
+		BINMAN_INDIRS=$(TI_LINUX_FIRMWARE) BL31=$(UBOOT_ATF) TEE=$(UBOOT_TEE)
+
+u-boot-extras-a53_clean:
+	@echo ===================================
+	@echo    Cleaning U-boot for A53
+	@echo ===================================
+	$(MAKE) -C $(UBOOTEXTRAS_SRC_DIR) CROSS_COMPILE=$(CROSS_COMPILE) \
+		distclean
+
+u-boot-extras-r5:
+	@echo ===================================
+	@echo    Building U-boot for R5
+	@echo ===================================
+	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOTEXTRAS_SRC_DIR) ARCH=arm $(UBOOT_MACHINE_R5)
+	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOTEXTRAS_SRC_DIR) ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE_ARMV7) \
+		BINMAN_INDIRS=$(TI_LINUX_FIRMWARE)
+
+u-boot-extras-r5_clean:
+	@echo ===================================
+	@echo    Cleaning U-boot for R5
+	@echo ===================================
+	$(MAKE) -C $(UBOOTEXTRAS_SRC_DIR) CROSS_COMPILE=$(CROSS_COMPILE_ARMV7) \
+		distclean
+
+
+u-boot-extras_stage:
+	mkdir -p $(STAGING_DIR)
+	cp $(UBOOTEXTRAS_SRC_DIR)/tispl.bin $(STAGING_DIR)/tispl.bin
+	cp $(UBOOTEXTRAS_SRC_DIR)/u-boot.img $(STAGING_DIR)/u-boot.img
+	cp $(UBOOTEXTRAS_SRC_DIR)/tiboot3.bin $(STAGING_DIR)/tiboot3.bin
+ifeq ($(SOC), $(filter $(SOC), j721e am65x))
+	cp $(UBOOTEXTRAS_SRC_DIR)/sysfw-$(SOC)-evm.itb $(STAGING_DIR)/sysfw.itb
+endif
+
+u-boot-extras_install: u-boot-extras_stage
+	@echo ===================================
+	@echo    Installing U-boot
+	@echo ===================================
+	@if [ -z $(BOOTFS) ] || [ ! -d $(BOOTFS) ] ; then \
+		echo "The extracted boot filesystem directory doesn't exist."; \
+		echo "Please try again with BOOTFS=<boot-filesystem-dir>"; \
+		exit 1; \
+	fi
+	cp $(STAGING_DIR)/tispl.bin $(BOOTFS)
+	cp $(STAGING_DIR)/u-boot.img $(BOOTFS)
+	cp $(STAGING_DIR)/tiboot3.bin $(BOOTFS)
+ifeq ($(SOC), $(filter $(SOC), j721e am65x))
+	cp $(STAGING_DIR)/sysfw.itb $(BOOTFS)
+endif
+
