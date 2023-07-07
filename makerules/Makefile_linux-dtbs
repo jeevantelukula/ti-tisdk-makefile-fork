@@ -25,7 +25,7 @@ linux-dtbs_install: linux-dtbs_stage
 	fi
 	install -d $(DESTDIR)/boot/dtb/ti
 	@for DTB in $(KERNEL_DEVICETREE); do \
-		install -m 0644 $(TI_SDK_PATH)/board-support/built-images/$$(basename $$DTB) $(DESTDIR)/boot/dtb/ti/; \
+		install -m 0644 $(TI_SDK_PATH)/board-support/built-images/dtb/ti/$$(basename $$DTB) $(DESTDIR)/boot/dtb/ti/; \
 	done
 
 linux-dtbs_clean:
