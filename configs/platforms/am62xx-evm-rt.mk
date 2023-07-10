@@ -19,7 +19,7 @@ ifeq ($(PLATFORM),am62xx-lp-evm)
     UBOOT_MACHINE_R5=am62x_lpsk_r5_defconfig
 endif
 
-KERNEL_DEVICETREE?= ti/k3-am625-beagleplay.dtb ti/k3-am625-sk-csi2-ov5640.dtbo ti/k3-am625-sk-csi2-tevi-ov5640.dtbo ti/k3-am625-sk.dtb ti/k3-am625-sk-hdmi-audio.dtbo ti/k3-am625-sk-lpmdemo.dtb ti/k3-am625-sk-mcan.dtbo ti/k3-am625-sk-microtips-mf101hie-panel.dtbo
+KERNEL_DEVICETREE_PREFIX=ti/k3-am625|ti/k3-am62-|ti/k3-am62x|ti/k3-am62.dtsi
 
 TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)
 UBOOT_ATF=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl31.bin

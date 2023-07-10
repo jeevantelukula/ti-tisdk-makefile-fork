@@ -1,4 +1,7 @@
 # Kernel DTB build targets
+
+KERNEL_DEVICETREE?=$(shell find $(LINUXKERNEL_INSTALL_DIR)/arch/arm64/boot/dts -printf '%P\n' | grep -wE '($(KERNEL_DEVICETREE_PREFIX)).*\.dts[o]?' | sed "s/dts/dtb/g" )
+
 linux-dtbs:
 	@echo =====================================
 	@echo     Building the Linux Kernel DTBs
