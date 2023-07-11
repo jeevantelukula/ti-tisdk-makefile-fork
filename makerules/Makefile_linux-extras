@@ -1,22 +1,22 @@
 # Kernel build targets
-linux-extras: linux-extras-dtbs
+linux-extras: linux-extras-dtbs u-boot-extras
 	@echo =================================
 	@echo     Building the Linux Kernel
 	@echo =================================
-	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) defconfig ti_arm64_prune.config
-	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE)  Image
-	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) modules
-
-linux-extras_stage: linux-extras-dtbs_stage
 	mkdir -p $(TI_SDK_PATH)/board-support/built-images
-# ifneq ($(SOC_TYPE),gp)
-# 	$(TI_SECURE_DEV_PKG)/scripts/secure-binary-image.sh $(LINUXEXTRASKERNEL_INSTALL_DIR)/arch/arm64/boot/Image $(TI_SDK_PATH)/board-support/built-images/Image.sec
-# 	cp $(TI_SDK_PATH)/board-support/prebuilt-images/fitImage.its $(TI_SDK_PATH)/board-support/built-images
-# 	cd $(TI_SDK_PATH)/board-support/built-images; \
-# 	mkimage -f fitImage.its -r fitImage
-# else
+	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) defconfig ti_arm64_prune.config
+	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE)  Image Image.gz
+	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) modules
+	# Build FitImage
+	$(shell cd $(LINUXEXTRASKERNEL_INSTALL_DIR) ; cp arch/arm64/boot/Image.gz ./linux.bin ; cd ..)
+	cp $(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/fitImage-its-$(PLATFORM) $(LINUXEXTRASKERNEL_INSTALL_DIR)
+	mkimage -r -f $(LINUXEXTRASKERNEL_INSTALL_DIR)/fitImage-its-$(PLATFORM) -k $(UBOOTEXTRAS_SRC_DIR)/board/ti/keys -K $(TI_SDK_PATH)/board-support/u-boot-extras-build/a53/dts/dt.dtb $(TI_SDK_PATH)/board-support/built-images/fitImage
+	# Rebuild uboot a53 for FitImage
+	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOTEXTRAS_SRC_DIR) ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE) \
+    BINMAN_INDIRS=$(TI_LINUX_FIRMWARE) BL31=$(UBOOT_ATF) TEE=$(UBOOT_TEE) O=$(TI_SDK_PATH)/board-support/u-boot-extras-build/a53
+
+linux-extras_stage: linux-extras-dtbs_stage u-boot-extras_stage
 	cp $(LINUXEXTRASKERNEL_INSTALL_DIR)/arch/arm64/boot/Image $(TI_SDK_PATH)/board-support/built-images
-# endif
 
 linux-extras_install: linux-extras_stage linux-extras-dtbs_install
 	@echo ===================================
@@ -28,11 +28,8 @@ linux-extras_install: linux-extras_stage linux-extras-dtbs_install
 		exit 1; \
 	fi
 	install -d $(DESTDIR)/boot
-# ifneq ($(SOC_TYPE),gp)
-# 	install $(TI_SDK_PATH)/board-support/built-images/fitImage $(DESTDIR)/boot
-# else
+	install $(TI_SDK_PATH)/board-support/built-images/fitImage $(DESTDIR)/boot
 	install $(TI_SDK_PATH)/board-support/built-images/Image $(DESTDIR)/boot
-# endif
 	install $(LINUXEXTRASKERNEL_INSTALL_DIR)/vmlinux $(DESTDIR)/boot
 	install $(LINUXEXTRASKERNEL_INSTALL_DIR)/System.map $(DESTDIR)/boot
 	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) INSTALL_MOD_PATH=$(DESTDIR) INSTALL_MOD_STRIP=$(INSTALL_MOD_STRIP) modules_install
