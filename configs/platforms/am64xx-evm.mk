@@ -13,7 +13,7 @@ ARCH=aarch64
 UBOOT_MACHINE=am64x_evm_a53_defconfig
 UBOOT_MACHINE_R5=am64x_evm_r5_defconfig
 
-KERNEL_DEVICETREE?= ti/k3-am642-evm.dtb ti/k3-am642-evm-icssg1-dualemac.dtbo ti/k3-am642-evm-icssg1-dualemac-mii.dtbo ti/k3-am642-sk.dtb
+KERNEL_DEVICETREE_PREFIX=ti/k3-am64
 
 TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)
 UBOOT_ATF=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl31.bin
