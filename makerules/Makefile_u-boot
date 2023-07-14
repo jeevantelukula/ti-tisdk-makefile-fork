@@ -56,8 +56,7 @@ u-boot_install: u-boot_stage
 	fi
 	cp $(TI_SDK_PATH)/board-support/built-images/tispl.bin $(DESTDIR)
 	cp $(TI_SDK_PATH)/board-support/built-images/u-boot.img $(DESTDIR)
-	cp $(TI_SDK_PATH)/board-support/built-images/tiboot3.bin $(DESTDIR)
+	cp $(TI_SDK_PATH)/board-support/built-images/tiboot3*.bin $(DESTDIR)
 ifeq ($(SOC), $(filter $(SOC), j721e am65x))
 	cp $(TI_SDK_PATH)/board-support/built-images/sysfw.itb $(DESTDIR)
 endif
-
