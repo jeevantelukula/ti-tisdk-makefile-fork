@@ -10,6 +10,8 @@ Build for a specific SOC using sources from a pre-installed SDK as follows:
 `make <target> PLATFORM=<platform> TI_SDK_PATH=</path/to/installed/sdk>`
 
 Currently supported `<platform>`s are:
+- am62xx-evm, am62xx-lp-evm
+- am64xx-evm
 - j721e
 - j7200
 - j721s2
