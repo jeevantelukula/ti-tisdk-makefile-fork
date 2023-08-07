@@ -18,8 +18,8 @@ AM_SYSINFO_SRC_DIR=$(TI_SDK_PATH)/example-applications/*am-sysinfo*
 OPROFILE_SRC_DIR=$(TI_SDK_PATH)/example-applications/*oprofile-example*
 CRYPTODEV_SRC_DIR=$(TI_SDK_PATH)/board-support/extra-drivers/cryptodev*
 IMG_ROGUE_SRC_DIR=$(TI_SDK_PATH)/board-support/extra-drivers/ti-img-rogue-driver*
-UBOOT_SRC_DIR=$(TI_SDK_PATH)/board-support/ti-u-boot
+UBOOT_SRC_DIR=$(TI_SDK_PATH)/board-support/ti-u-boot*
 KIG_SRC_DIR=$(TI_SDK_PATH)/board-support/k3-image-gen-*
-LINUXKERNEL_INSTALL_DIR=$(TI_SDK_PATH)/board-support/ti-linux-kernel
+LINUXKERNEL_INSTALL_DIR=$(TI_SDK_PATH)/board-support/ti-linux-kernel*
 
 export TI_SECURE_DEV_PKG=$(TI_SDK_PATH)/board-support/core-secdev-k3
