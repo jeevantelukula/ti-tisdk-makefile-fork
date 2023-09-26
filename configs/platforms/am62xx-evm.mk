@@ -7,7 +7,8 @@ PLATFORM?=am62xx-evm
 #defconfig
 DEFCONFIG=tisdk_am62xx-evm_defconfig
 
-ARCH=aarch64
+#Architecture
+ARCH=arm64
 
 # u-boot machine configs for A53 and R5
 UBOOT_MACHINE=am62x_evm_a53_defconfig
