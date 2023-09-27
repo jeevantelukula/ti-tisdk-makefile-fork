@@ -8,7 +8,7 @@ linux-extras: linux-extras-dtbs u-boot-extras
 	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE)  Image Image.gz
 	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) modules
 	# Build FitImage
-	$(shell cd $(LINUXEXTRASKERNEL_INSTALL_DIR) ; cp arch/arm64/boot/Image.gz ./linux.bin ; cd ..)
+	cd $(LINUXEXTRASKERNEL_INSTALL_DIR) ; cp arch/arm64/boot/Image.gz ./linux.bin ; cd ..
 	cp $(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/fitImage-its-$(PLATFORM) $(LINUXEXTRASKERNEL_INSTALL_DIR)
 	mkimage -r -f $(LINUXEXTRASKERNEL_INSTALL_DIR)/fitImage-its-$(PLATFORM) -k $(UBOOTEXTRAS_SRC_DIR)/board/ti/keys -K $(TI_SDK_PATH)/board-support/u-boot-extras-build/$(MKIMAGE_DTB_FILE) $(TI_SDK_PATH)/board-support/built-images/fitImage
 	# Rebuild uboot a53 for FitImage
