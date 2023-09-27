@@ -3,9 +3,9 @@ linux-extras-dtbs:
 	@echo =====================================
 	@echo     Building the Linux Kernel DTBs
 	@echo =====================================
-	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) defconfig ti_arm64_prune.config
+	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) defconfig ti_arm64_prune.config
 	@for DTB in $(KERNEL_DEVICETREE); do \
-		$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) DTC_FLAGS=-@ ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) $$DTB; \
+		$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) DTC_FLAGS=-@ ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) $$DTB; \
 	done
 
 linux-extras-dtbs_stage:

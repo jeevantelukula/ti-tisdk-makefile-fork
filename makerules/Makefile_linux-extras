@@ -4,9 +4,9 @@ linux-extras: linux-extras-dtbs u-boot-extras
 	@echo     Building the Linux Kernel
 	@echo =================================
 	mkdir -p $(TI_SDK_PATH)/board-support/built-images
-	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) defconfig ti_arm64_prune.config
-	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE)  Image Image.gz
-	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) modules
+	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) defconfig ti_arm64_prune.config
+	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE)  Image Image.gz
+	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) modules
 	# Build FitImage
 	$(shell cd $(LINUXEXTRASKERNEL_INSTALL_DIR) ; cp arch/arm64/boot/Image.gz ./linux.bin ; cd ..)
 	cp $(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/fitImage-its-$(PLATFORM) $(LINUXEXTRASKERNEL_INSTALL_DIR)
@@ -32,10 +32,10 @@ linux-extras_install: linux-extras_stage linux-extras-dtbs_install
 	install $(TI_SDK_PATH)/board-support/built-images/Image $(DESTDIR)/boot
 	install $(LINUXEXTRASKERNEL_INSTALL_DIR)/vmlinux $(DESTDIR)/boot
 	install $(LINUXEXTRASKERNEL_INSTALL_DIR)/System.map $(DESTDIR)/boot
-	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) INSTALL_MOD_PATH=$(DESTDIR) INSTALL_MOD_STRIP=$(INSTALL_MOD_STRIP) modules_install
+	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) INSTALL_MOD_PATH=$(DESTDIR) INSTALL_MOD_STRIP=$(INSTALL_MOD_STRIP) modules_install
 
 linux-extras_clean:
 	@echo =================================
 	@echo     Cleaning the Linux Kernel
 	@echo =================================
-	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) mrproper
+	$(MAKE) -C $(LINUXEXTRASKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) mrproper
