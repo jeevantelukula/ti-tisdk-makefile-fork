@@ -41,6 +41,9 @@ cat $BASEDIR/configs/setup/tisdk-installer.mk >> Rules.make
 echo "### PLATFORM CONFIG ###" >>  Rules.make
 cat $BASEDIR/configs/platforms/$platform$suffix.mk >> Rules.make
 
+### remove occurence of legacy
+sed -i 's/-legacy//g' Rules.make
+
 ### Copy Top Level Makefile
 cp $BASEDIR/Makefile ./
 
@@ -51,5 +54,10 @@ COMPONENTS_LIST=$(sed -n "s|MAKE_ALL_TARGETS?=||p" $BASEDIR/configs/platforms/$p
 for comp in $COMPONENTS_LIST;
 do
     echo $comp
-    cp $BASEDIR/makerules/Makefile_$comp makerules/
+	if [[ $comp == *legacy* ]]; then
+		comp_update=$(echo "$comp" | sed 's/-legacy//')
+		cp $BASEDIR/makerules/Makefile_$comp makerules/Makefile_$comp_update
+	else
+		cp $BASEDIR/makerules/Makefile_$comp makerules/
+	fi
 done

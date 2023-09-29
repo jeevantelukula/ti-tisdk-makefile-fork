@@ -1,0 +1,34 @@
+
+u-boot:
+	@echo ===================================
+	@echo    Building U-boot
+	@echo ===================================
+	mkdir -p $(TI_SDK_PATH)/board-support/u-boot-build
+	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOT_SRC_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) $(UBOOT_MACHINE) \
+		0=$(TI_SDK_PATH)/board-support/u-boot-build
+	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOT_SRC_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) \
+		0=$(TI_SDK_PATH)/board-support/u-boot-build CONFIG_MKIMAGE_DTC_PATH=$(UBOOT_SRC_DIR)/scripts/dtc/dtc
+
+u-boot_clean:
+	@echo ===================================
+	@echo    Cleaning U-boot
+	@echo ===================================
+	$(MAKE) -C $(UBOOT_SRC_DIR) CROSS_COMPILE=$(CROSS_COMPILE) O=$(TI_SDK_PATH)/board-support/u-boot-build \
+		distclean
+
+u-boot_stage:
+	mkdir -p $(TI_SDK_PATH)/board-support/built-images
+	cp $(TI_SDK_PATH)/board-support/u-boot-build/MLO $(TI_SDK_PATH)/board-support/built-images/MLO
+	cp $(TI_SDK_PATH)/board-support/u-boot-build/u-boot.img $(TI_SDK_PATH)/board-support/built-images/u-boot.img
+
+u-boot_install: u-boot_stage
+	@echo ===================================
+	@echo    Installing U-boot
+	@echo ===================================
+	@if [ -z $(DESTDIR) ] || [ ! -d $(DESTDIR) ] ; then \
+		echo "The extracted boot filesystem directory doesn't exist."; \
+		echo "Please try again with BOOTFS=<boot-filesystem-dir>"; \
+		exit 1; \
+	fi
+	cp $(TI_SDK_PATH)/board-support/built-images/MLO $(DESTDIR)
+	cp $(TI_SDK_PATH)/board-support/built-images/u-boot.img $(DESTDIR)
