@@ -5,9 +5,9 @@ u-boot:
 	@echo ===================================
 	mkdir -p $(TI_SDK_PATH)/board-support/u-boot-build
 	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOT_SRC_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) $(UBOOT_MACHINE) \
-		0=$(TI_SDK_PATH)/board-support/u-boot-build
+		O=$(TI_SDK_PATH)/board-support/u-boot-build
 	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOT_SRC_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) \
-		0=$(TI_SDK_PATH)/board-support/u-boot-build CONFIG_MKIMAGE_DTC_PATH=$(UBOOT_SRC_DIR)/scripts/dtc/dtc
+		O=$(TI_SDK_PATH)/board-support/u-boot-build CONFIG_MKIMAGE_DTC_PATH=$(UBOOT_SRC_DIR)/scripts/dtc/dtc
 
 u-boot_clean:
 	@echo ===================================
