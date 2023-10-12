@@ -4,7 +4,7 @@ linux: linux-dtbs
 	@echo     Building the Linux Kernel
 	@echo =================================
 	mkdir -p $(TI_SDK_PATH)/board-support/built-images
-	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) multi_v7_defconfig ti_multi_v7_prune.config no_smp.config
+	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) multi_v7_defconfig ti_multi_v7_prune.config no_smp.config $(RT_FRAGMENT)
 	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) zImage
 	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) modules
 

@@ -10,6 +10,9 @@ ARCH=arm
 # u-boot machine config
 UBOOT_MACHINE=am335x_evm_defconfig
 
+# rt fragment
+RT_FRAGMENT=ti_rt.config
+
 # Override value of cross compiler
 export CROSS_COMPILE=$(LINUX_DEVKIT_PATH)/sysroots/x86_64-arago-linux/usr/bin/arm-oe-linux-gnueabi/arm-oe-linux-gnueabi-
 export CC=$(CROSS_COMPILE)gcc --sysroot=$(SDK_PATH_TARGET)

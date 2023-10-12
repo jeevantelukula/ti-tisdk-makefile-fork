@@ -23,6 +23,9 @@ UBOOT_MACHINE=am64x_evm_a53_defconfig
 UBOOT_MACHINE_R5=am64x_evm_r5_defconfig
 MKIMAGE_DTB_FILE=a53/arch/arm/dts/k3-am642-evm.dtb
 
+# rt fragment
+RT_FRAGMENT=ti_rt.config
+
 KERNEL_DEVICETREE_PREFIX=ti/k3-am64
 
 TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)

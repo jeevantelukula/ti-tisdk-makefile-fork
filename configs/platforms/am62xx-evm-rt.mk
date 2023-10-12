@@ -23,6 +23,9 @@ UBOOT_MACHINE=am62x_evm_a53_defconfig
 UBOOT_MACHINE_R5=am62x_evm_r5_defconfig
 MKIMAGE_DTB_FILE=a53/arch/arm/dts/k3-am625-sk.dtb
 
+# rt fragment
+RT_FRAGMENT=ti_rt.config
+
 # Update platform, defconfig if PLATFORM=am62xx-lp-evm
 ifeq ($(PLATFORM),am62xx-lp-evm)
     UBOOT_MACHINE=am62x_lpsk_a53_defconfig
