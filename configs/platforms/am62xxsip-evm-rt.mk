@@ -20,6 +20,9 @@ UBOOT_MACHINE=am62x_evm_a53_defconfig
 UBOOT_MACHINE_R5=am62x_evm_r5_defconfig am62xsip_sk_r5.config
 MKIMAGE_DTB_FILE=a53/arch/arm/dts/k3-am625-sk.dtb
 
+# rt fragment
+RT_FRAGMENT=ti_rt.config
+
 KERNEL_DEVICETREE_PREFIX=ti/k3-am625|ti/k3-am62-|ti/k3-am62x|ti/k3-am62.dtsi
 
 TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)

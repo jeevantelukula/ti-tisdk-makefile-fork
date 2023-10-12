@@ -4,7 +4,7 @@ linux: linux-dtbs u-boot
 	@echo     Building the Linux Kernel
 	@echo =================================
 	mkdir -p $(TI_SDK_PATH)/board-support/built-images
-	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) defconfig ti_arm64_prune.config
+	$(MAKE) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) defconfig ti_arm64_prune.config $(RT_FRAGMENT)
 	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE)  Image Image.gz
 	$(MAKE) -j $(MAKE_JOBS) -C $(LINUXKERNEL_INSTALL_DIR) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) modules
 	# Build FitImage
