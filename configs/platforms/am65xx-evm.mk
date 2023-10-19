@@ -1,6 +1,9 @@
 #platform
 SOC=am65
 
+# for ti-sgx
+TARGET_PRODUCT=ti654x
+
 #add platform for scripts
 PLATFORM?=am65xx-evm
 
