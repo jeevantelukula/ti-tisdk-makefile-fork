@@ -12,7 +12,7 @@ ARCH=arm
 UBOOT_MACHINE=am43xx_evm_defconfig
 
 # Override value of cross compiler
-export CROSS_COMPILE=$(LINUX_DEVKIT_PATH)/sysroots/x86_64-arago-linux/usr/bin/arm-oe-linux-gnueabi/arm-oe-linux-gnueabi-
+export CROSS_COMPILE=$(TI_SDK_PATH)/external-toolchain-dir/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-linux-gnueabihf/bin/arm-none-linux-gnueabihf-
 export CC=$(CROSS_COMPILE)gcc --sysroot=$(SDK_PATH_TARGET)
 
 KERNEL_DEVICETREE_PREFIX=am437x-|am43x-
