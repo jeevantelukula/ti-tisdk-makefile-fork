@@ -16,4 +16,4 @@ export CC=$(CROSS_COMPILE)gcc --sysroot=$(SDK_PATH_TARGET)
 
 KERNEL_DEVICETREE_PREFIX=am335x-
 
-MAKE_ALL_TARGETS?= arm-benchmarks oprofile-example pru-icss matrix-gui cryptodev u-boot-legacy linux-legacy linux-legacy-dtbs matrix-gui-browser refresh-screen qt-tstat mmwavegesture-hmi pdm-anomaly-detection evse-hmi protection-relays-hmi pru-adc
+MAKE_ALL_TARGETS?= arm-benchmarks oprofile-example pru-icss matrix-gui cryptodev u-boot-legacy linux-legacy linux-legacy-dtbs matrix-gui-browser refresh-screen qt-tstat mmwavegesture-hmi pdm-anomaly-detection evse-hmi protection-relays-hmi pru-adc ti-sgx-ddk-km
