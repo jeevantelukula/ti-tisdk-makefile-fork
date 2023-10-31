@@ -32,4 +32,4 @@ TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)
 UBOOT_ATF=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl31.bin
 UBOOT_TEE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl32.bin
 
-MAKE_ALL_TARGETS?= arm-benchmarks oprofile-example pru-icss cryptodev u-boot linux linux-dtbs pdm-anomaly-detection matrix-gui ti-sgx-ddk-km
+MAKE_ALL_TARGETS?= arm-benchmarks oprofile-example pru-icss cryptodev u-boot linux linux-dtbs matrix-gui ti-sgx-ddk-km
