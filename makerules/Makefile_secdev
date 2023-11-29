@@ -1,0 +1,22 @@
+
+secdev:
+	@echo =====================================
+	@echo      Building SECDEV
+	@echo =====================================
+	GCC_ARM_NONE_TOOLCHAIN=$(GCC_ARM_NONE_TOOLCHAIN) \
+		make -C $(TI_SECURE_DEV_PKG)/scripts \
+		CROSS_COMPILE=$(CROSS_COMPILE) all
+
+secdev-default_clean:
+	@echo =====================================
+	@echo      Cleaning SECDEV
+	@echo =====================================
+	GCC_ARM_NONE_TOOLCHAIN=$(GCC_ARM_NONE_TOOLCHAIN) \
+		make -C $(TI_SECURE_DEV_PKG)/scripts  \
+		CROSS_COMPILE=$(CROSS_COMPILE) clean
+
+secdev_install:
+	@echo ===================================
+	@echo    Installing SECDEV
+	@echo ===================================
+	@echo "Nothing to do"
