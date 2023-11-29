@@ -2,6 +2,7 @@
 export TI_SDK_PATH?=__SDK__INSTALL_DIR__
 
 export LINUX_DEVKIT_PATH=$(TI_SDK_PATH)/linux-devkit
+export K3_R5_LINUX_DEVKIT_PATH=$(TI_SDK_PATH)/k3r5-devkit
 SDK_PATH_TARGET=$(LINUX_DEVKIT_PATH)/sysroots/aarch64-oe-linux
 SDK_PATH_HOST=$(LINUX_DEVKIT_PATH)/sysroots/x86_64-arago-linux
 
