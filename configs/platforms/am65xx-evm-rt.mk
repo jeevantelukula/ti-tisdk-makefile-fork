@@ -1,5 +1,5 @@
 #platform
-SOC=am65
+SOC=am65x
 
 # for ti-sgx
 TARGET_PRODUCT=ti654x
