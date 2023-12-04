@@ -42,7 +42,7 @@ u-boot_stage:
 	cp $(TI_SDK_PATH)/board-support/u-boot-build/a53/u-boot.img $(TI_SDK_PATH)/board-support/built-images/u-boot.img
 	cp $(TI_SDK_PATH)/board-support/u-boot-build/r5/tiboot3*.bin $(TI_SDK_PATH)/board-support/built-images/
 ifeq ($(SOC), $(filter $(SOC), j721e am65x))
-	cp $(UBOOT_SRC_DIR)/sysfw-$(SOC)-evm.itb $(TI_SDK_PATH)/board-support/built-images/sysfw.itb
+	cp $(TI_SDK_PATH)/board-support/u-boot-build/r5/sysfw*.itb $(TI_SDK_PATH)/board-support/built-images/
 endif
 
 u-boot_install: u-boot_stage
@@ -58,5 +58,5 @@ u-boot_install: u-boot_stage
 	cp $(TI_SDK_PATH)/board-support/built-images/u-boot.img $(DESTDIR)
 	cp $(TI_SDK_PATH)/board-support/built-images/tiboot3*.bin $(DESTDIR)
 ifeq ($(SOC), $(filter $(SOC), j721e am65x))
-	cp $(TI_SDK_PATH)/board-support/built-images/sysfw.itb $(DESTDIR)
+	cp $(TI_SDK_PATH)/board-support/built-images/sysfw*.itb $(DESTDIR)
 endif
