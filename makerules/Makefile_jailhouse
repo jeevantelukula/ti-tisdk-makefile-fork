@@ -13,7 +13,7 @@ jailhouse: linux-extras jailhouse_config
 	@echo =====================================
 	@cd board-support/extra-drivers; \
 	cd `find . -maxdepth 1 -name "jailhouse*" -type d`; \
-	make ARCH=$(ARCH) KDIR=${LINUXEXTRASKERNEL_INSTALL_DIR}
+	make ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) CC="$(CC)" KDIR=${LINUXEXTRASKERNEL_INSTALL_DIR}
 
 jailhouse_clean:
 	@echo =====================================
@@ -21,7 +21,7 @@ jailhouse_clean:
 	@echo =====================================
 	@cd board-support/extra-drivers; \
 	cd `find . -maxdepth 1 -name "jailhouse*" -type d`; \
-	make ARCH=$(ARCH) KDIR=${LINUXEXTRASKERNEL_INSTALL_DIR} clean
+	make ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) CC="$(CC)" KDIR=${LINUXEXTRASKERNEL_INSTALL_DIR} clean
 
 jailhouse_distclean: jailhouse_clean
 	@echo =====================================
@@ -37,4 +37,4 @@ jailhouse_install:
 	@echo ================================
 	@cd board-support/extra-drivers; \
 	cd `find . -maxdepth 1 -name "jailhouse*" -type d`; \
-	make ARCH=$(ARCH) KDIR=${LINUXEXTRASKERNEL_INSTALL_DIR} DESTDIR=$(DESTDIR) INSTALL_MOD_STRIP=$(INSTALL_MOD_STRIP) prefix=/usr install
+	make ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) CC="$(CC)" KDIR=${LINUXEXTRASKERNEL_INSTALL_DIR} DESTDIR=$(DESTDIR) INSTALL_MOD_STRIP=$(INSTALL_MOD_STRIP) prefix=/usr install
