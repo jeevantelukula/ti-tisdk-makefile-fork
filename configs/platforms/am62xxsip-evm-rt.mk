@@ -16,8 +16,8 @@ export CROSS_COMPILE_ARMV7=$(K3_R5_LINUX_DEVKIT_PATH)/sysroots/x86_64-arago-linu
 export CC=$(CROSS_COMPILE)gcc --sysroot=$(SDK_PATH_TARGET)
 
 # u-boot machine configs for A53 and R5
-UBOOT_MACHINE=am62x_evm_a53_defconfig
-UBOOT_MACHINE_R5=am62x_evm_r5_defconfig am62xsip_sk_r5.config
+UBOOT_MACHINE=am62xsip_evm_a53_defconfig
+UBOOT_MACHINE_R5=am62xsip_evm_r5_defconfig
 MKIMAGE_DTB_FILE=a53/arch/arm/dts/k3-am625-sk.dtb
 
 # rt fragment
