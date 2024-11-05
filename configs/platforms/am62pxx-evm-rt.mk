@@ -4,9 +4,6 @@ SOC=am62p
 #add platform for scripts
 PLATFORM?=am62pxx-evm
 
-#defconfig
-DEFCONFIG=tisdk_am62pxx-evm_defconfig
-
 #Architecture
 ARCH=arm64
 
@@ -36,7 +33,8 @@ UBOOTEXTRAS_SRC_DIR=$(TI_SDK_PATH)/board-support/u-boot-extras-jailhouse-*
 
 # Add configs for ti-img-rogue-driver
 PVR_BUILD_DIR=am62p_linux
-RGX_BVNC="33.15.11.3"
-WINDOW_SYSTEM=wayland
+RGX_BVNC="36.53.104.796"
+WINDOW_SYSTEM=lws-generic
+PVR_BUILD=release
 
 MAKE_ALL_TARGETS?= arm-benchmarks cryptodev u-boot linux linux-dtbs ti-img-rogue-driver jailhouse linux-extras linux-extras-dtbs u-boot-extras
