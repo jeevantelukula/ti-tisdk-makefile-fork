@@ -40,7 +40,6 @@ UBOOTEXTRAS_SRC_DIR=$(TI_SDK_PATH)/board-support/u-boot-extras-jailhouse-*
 
 # Add configs for ti-img-rogue-driver
 PVR_BUILD_DIR=am62_linux
-RGX_BVNC="33.15.11.3"
 WINDOW_SYSTEM=lws-generic
 PVR_BUILD=release
 
