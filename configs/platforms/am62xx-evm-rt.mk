@@ -4,9 +4,6 @@ SOC=am62
 #add platform for scripts
 PLATFORM?=am62xx-evm
 
-#defconfig
-DEFCONFIG=tisdk_am62xx-evm_defconfig
-
 #Architecture
 ARCH=arm64
 
