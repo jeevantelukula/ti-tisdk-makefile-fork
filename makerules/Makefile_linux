@@ -10,7 +10,7 @@ linux: linux-dtbs u-boot
 	# Build FitImage
 	cd $(LINUXKERNEL_INSTALL_DIR) ; cp arch/arm64/boot/Image.gz ./linux.bin ; cd ..
 	cp $(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/fitImage-its-$(PLATFORM) $(LINUXKERNEL_INSTALL_DIR)
-	mkimage -r -f $(LINUXKERNEL_INSTALL_DIR)/fitImage-its-$(PLATFORM) -k $(UBOOT_SRC_DIR)/board/ti/keys -K $(TI_SDK_PATH)/board-support/u-boot-build/$(MKIMAGE_DTB_FILE) $(TI_SDK_PATH)/board-support/built-images/fitImage
+	mkimage -r -f $(LINUXKERNEL_INSTALL_DIR)/fitImage-its-$(PLATFORM) -k $(UBOOT_SRC_DIR)/arch/arm/mach-k3/keys -K $(TI_SDK_PATH)/board-support/u-boot-build/$(MKIMAGE_DTB_FILE) $(TI_SDK_PATH)/board-support/built-images/fitImage
 	# Rebuild uboot a53 (binman) for FitImage
 ifeq ($(SOC), am62l)
 	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOT_SRC_DIR) ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE) CC="$(CC)" \
