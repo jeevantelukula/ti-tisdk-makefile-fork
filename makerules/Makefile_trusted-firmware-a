@@ -1,0 +1,23 @@
+atf: atf_build atf_stage
+
+atf_build:
+	@echo =======================
+	@echo    Building TFA
+	@echo =======================
+	mkdir -p $(TI_SDK_PATH)/board-support/tfa-build
+	$(MAKE) -j $(MAKE_JOBS) -C $(TFA_SRC_DIR) ARCH=aarch64 CROSS_COMPILE=$(CROSS_COMPILE) O=$(TI_SDK_PATH)/board-support/tfa-build \
+                PLAT=k3 K3_PM_SYSTEM_SUSPEND=1 TARGET_BOARD=$(SOC) SPD=$(TFA_SPD)
+
+atf_clean:
+	@echo =======================
+	@echo    Cleaning TFA
+	@echo =======================
+	$(MAKE) -j $(MAKE_JOBS) -C $(TFA_SRC_DIR) CROSS_COMPILE=$(CROSS_COMPILE) O=$(TI_SDK_PATH)/board-support/tfa-build distclean
+
+atf_stage:
+        mkdir -p $(TI_SDK_PATH)/board-support/built-images
+        cp $(TI_SDK_PATH)/board-support/tfa-build/bl31.bin $(TI_SDK_PATH)/board-support/built-images/bl31.bin
+
+ifeq ($(SOC), am62l)
+        cp $(TI_SDK_PATH)/board-support/tfa-build/bl1.bin $(TI_SDK_PATH)/board-support/built-images/bl1.bin
+endif

@@ -24,9 +24,11 @@ MKIMAGE_DTB_FILE=a53/dts/upstream/src/arm64/ti/k3-am62l3-evm.dtb
 
 KERNEL_DEVICETREE_PREFIX=ti/k3-am62l
 
+TFA_SPD?=opteed
+
 TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)
-UBOOT_AP_TRUSTED_ROM=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl1.bin
-UBOOT_ATF=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl31.bin
+UBOOT_AP_TRUSTED_ROM=$(TI_SDK_PATH)/board-support/built-images/bl1.bin
+UBOOT_ATF=$(TI_SDK_PATH)/board-support/built-images/bl31.bin
 UBOOT_TEE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl32.bin
 
-MAKE_ALL_TARGETS?= arm-benchmarks u-boot linux linux-dtbs
+MAKE_ALL_TARGETS?= arm-benchmarks atf u-boot linux linux-dtbs
