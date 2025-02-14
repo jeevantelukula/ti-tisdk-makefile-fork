@@ -18,13 +18,13 @@ export CC=$(CROSS_COMPILE)gcc --sysroot=$(SDK_PATH_TARGET)
 # u-boot machine configs for A53 and R5
 UBOOT_MACHINE=am62x_evm_a53_defconfig
 UBOOT_MACHINE_R5=am62x_evm_r5_defconfig
-MKIMAGE_DTB_FILE=a53/arch/arm/dts/k3-am625-sk.dtb
+MKIMAGE_DTB_FILE=a53/dts/upstream/src/arm64/ti/k3-am625-sk.dtb
 
 # Update platform, defconfig if PLATFORM=am62xx-lp-evm
 ifeq ($(PLATFORM),am62xx-lp-evm)
     UBOOT_MACHINE=am62x_lpsk_a53_defconfig
     UBOOT_MACHINE_R5=am62x_lpsk_r5_defconfig
-    MKIMAGE_DTB_FILE=a53/arch/arm/dts/k3-am62-lp-sk.dtb
+    MKIMAGE_DTB_FILE=a53/dts/upstream/src/arm64/ti/k3-am62-lp-sk.dtb
 endif
 
 KERNEL_DEVICETREE_PREFIX=ti/k3-am625|ti/k3-am62-|ti/k3-am62x|ti/k3-am62.dtsi
