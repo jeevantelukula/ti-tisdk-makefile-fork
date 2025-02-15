@@ -18,7 +18,7 @@ export CC=$(CROSS_COMPILE)gcc --sysroot=$(SDK_PATH_TARGET)
 # u-boot machine configs for A53 and R5
 UBOOT_MACHINE=am62xsip_evm_a53_defconfig
 UBOOT_MACHINE_R5=am62xsip_evm_r5_defconfig
-MKIMAGE_DTB_FILE=a53/arch/arm/dts/k3-am625-sk.dtb
+MKIMAGE_DTB_FILE=a53/dts/upstream/src/arm64/ti/k3-am625-sk.dtb
 
 # rt fragment
 RT_FRAGMENT=ti_rt.config
