@@ -20,6 +20,12 @@ u-boot-extras-a53_clean:
 		distclean
 
 u-boot-extras-r5:
+
+ifeq ($(SOC), am62l)
+	$(warning Target u-boot-extras-r5 isn't applicable for AM62L)
+	$(error Skipping with a warning message)
+endif
+
 	@echo ===================================
 	@echo    Building U-boot for R5
 	@echo ===================================
@@ -29,6 +35,12 @@ u-boot-extras-r5:
 		BINMAN_INDIRS=$(TI_LINUX_FIRMWARE)  O=$(TI_SDK_PATH)/board-support/u-boot-extras-build/r5
 
 u-boot-extras-r5_clean:
+
+ifeq ($(SOC), am62l)
+	$(warning Target u-boot-extras-r5_clean isn't applicable for AM62L)
+	$(error Skipping with a warning message)
+endif
+
 	@echo ===================================
 	@echo    Cleaning U-boot for R5
 	@echo ===================================
