@@ -23,7 +23,7 @@ if [ ! -z $RT ] && [ $RT -eq 1 ]; then
 	suffix="-rt"
 fi
 
-if [ -z $platform ] || [ ! -f $BASEDIR/configs/platforms/$platform$suffix.mk ] ; then
+if [ -z $platform ] || [ ! -f $BASEDIR/configs/platforms/$platform.mk ] ; then
     echo "Error: invalid platform"
     exit 1
 fi
@@ -39,7 +39,13 @@ cat $BASEDIR/configs/common.mk >> Rules.make
 echo "### TI SDK CONFIG ###" >>  Rules.make
 cat $BASEDIR/configs/setup/tisdk-installer.mk >> Rules.make
 echo "### PLATFORM CONFIG ###" >>  Rules.make
-cat $BASEDIR/configs/platforms/$platform$suffix.mk >> Rules.make
+
+if [ "$suffix" == "-rt" ]; then
+	echo -e "\n### rt fragment config ###" >>  Rules.make
+	echo -e "RT_FRAGMENT=ti_rt.config\n" >> Rules.make
+fi
+
+cat $BASEDIR/configs/platforms/$platform.mk >> Rules.make
 
 ### remove occurence of legacy
 sed -i 's/-legacy//g' Rules.make
@@ -50,7 +56,7 @@ cp $BASEDIR/Makefile ./
 ## Add all required makerule files
 # cp -r $BASEDIR/makerules ./
 mkdir -p makerules
-COMPONENTS_LIST=$(sed -n "s|MAKE_ALL_TARGETS?=||p" $BASEDIR/configs/platforms/$platform$suffix.mk)
+COMPONENTS_LIST=$(sed -n "s|MAKE_ALL_TARGETS?=||p" $BASEDIR/configs/platforms/$platform.mk)
 for comp in $COMPONENTS_LIST;
 do
     echo $comp
