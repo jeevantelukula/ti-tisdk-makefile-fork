@@ -5,7 +5,7 @@ SYSFW_SOC=am62ax
 #add platform for scripts
 PLATFORM?=am62axx-evm
 
-ARCH=aarch64
+ARCH=arm64
 
 #Set cross compilers
 export CROSS_COMPILE=$(TI_SDK_PATH)/linux-devkit/sysroots/x86_64-arago-linux/usr/bin/aarch64-oe-linux/aarch64-oe-linux-
