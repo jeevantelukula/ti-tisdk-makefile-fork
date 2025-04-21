@@ -13,7 +13,7 @@ export CROSS_COMPILE_ARMV7=$(TI_SDK_PATH)/k3r5-devkit/sysroots/x86_64-arago-linu
 
 #Default CC value to be used when cross compiling.  This is so that the
 #GNU Make default of "cc" is not used to point to the host compiler
-export CC_64=$(CROSS_COMPILE)gcc --sysroot=$(SDK_PATH_TARGET)
+export CC=$(CROSS_COMPILE)gcc --sysroot=$(SDK_PATH_TARGET)
 
 # u-boot machine configs for A53 and R5
 UBOOT_MACHINE=am62ax_evm_a53_defconfig
