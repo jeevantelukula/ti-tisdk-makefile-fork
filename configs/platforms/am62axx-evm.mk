@@ -20,8 +20,7 @@ UBOOT_MACHINE=am62ax_evm_a53_defconfig
 UBOOT_MACHINE_R5=am62ax_evm_r5_defconfig
 MKIMAGE_DTB_FILE=a53/dts/upstream/src/arm64/ti/k3-am62a7-sk.dtb
 
-KERNEL_DEVICETREE?= ti/k3-am62a7-sk.dtb    ti/k3-am62a7-sk-csi2-imx219.dtbo    ti/k3-am62a7-sk-fusion.dtbo    ti/k3-am62a7-sk-ethernet-dc01.dtbo
-
+KERNEL_DEVICETREE_PREFIX=ti/k3-am62a7|ti/k3-fpdlink|ti/k3-am62x-sk|ti/k3-v3link
 
 TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)
 UBOOT_ATF=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl31.bin
