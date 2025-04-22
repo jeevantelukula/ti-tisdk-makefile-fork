@@ -4,6 +4,7 @@ TARGET_PRODUCT=ti335x
 
 #add platform for scripts
 PLATFORM?=am335x-evm
+YOCTO_MACHINE?=am335x-evm
 
 ARCH=arm
 

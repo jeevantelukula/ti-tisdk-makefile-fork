@@ -4,6 +4,7 @@ TARGET_PRODUCT=ti437x
 
 #add platform for scripts
 PLATFORM?=am437x-hs-evm
+YOCTO_MACHINE?=am437x-hs-evm
 
 #Architecture
 ARCH=arm
