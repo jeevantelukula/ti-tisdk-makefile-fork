@@ -6,6 +6,7 @@ TARGET_PRODUCT=ti654x
 
 #add platform for scripts
 PLATFORM?=am65xx-evm
+YOCTO_MACHINE?=am65xx-evm
 
 #Architecture
 ARCH=arm64

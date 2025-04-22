@@ -3,6 +3,7 @@ SOC=am62p
 
 #add platform for scripts
 PLATFORM?=am62pxx-evm
+YOCTO_MACHINE?=am62pxx-evm
 
 #Architecture
 ARCH=arm64

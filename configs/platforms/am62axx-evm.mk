@@ -3,7 +3,7 @@ SOC=am62a
 
 #add platform for scripts
 PLATFORM?=am62a-evm
-
+YOCTO_MACHINE?=am62axx-evm
 ARCH=arm64
 
 #Set cross compilers
