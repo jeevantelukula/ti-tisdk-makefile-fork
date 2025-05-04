@@ -15,7 +15,7 @@ ifeq ($(SOC), am62l)
 		BINMAN_INDIRS=$(TI_LINUX_FIRMWARE) BL1=$(UBOOT_AP_TRUSTED_ROM) BL31=$(UBOOT_ATF) TEE=$(UBOOT_TEE) O=$(TI_SDK_PATH)/board-support/u-boot-extras-build/a53
 else
 	$(MAKE) -j $(MAKE_JOBS) -C $(UBOOTEXTRAS_SRC_DIR) ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE) CC="$(CC)" \
-		BINMAN_INDIRS=$(TI_LINUX_FIRMWARE) BL31=$(UBOOT_ATF) TEE=$(UBOOT_TEE) O=$(TI_SDK_PATH)/board-support/u-boot-extras-build/a53
+		BINMAN_INDIRS=$(TI_LINUX_FIRMWARE) BL31=$(UBOOT_ATF) TEE=$(UBOOT_TEE) TI_DM=$(TI_DM) O=$(TI_SDK_PATH)/board-support/u-boot-extras-build/a53
 endif
 
 u-boot-extras-a53_clean:
