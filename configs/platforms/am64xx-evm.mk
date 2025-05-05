@@ -26,6 +26,6 @@ KERNEL_DEVICETREE_PREFIX=ti/k3-am64
 TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)
 UBOOT_ATF=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl31.bin
 UBOOT_TEE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl32.bin
-
+TI_DM = ""
 
 MAKE_ALL_TARGETS?= arm-benchmarks cryptodev u-boot linux linux-dtbs
