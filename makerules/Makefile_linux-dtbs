@@ -1,6 +1,8 @@
 # Kernel DTB build targets
 
 KERNEL_DEVICETREE?=$(shell find $(LINUXKERNEL_INSTALL_DIR)/arch/arm64/boot/dts -printf '%P\n' | grep -wE '($(KERNEL_DEVICETREE_PREFIX)).*\.dts[o]?' | sed "s/dts/dtb/g" )
+KERNEL_DEVICETREE += $(shell grep -F 'dtb-$$(CONFIG_ARCH_K3)' $(LINUXKERNEL_INSTALL_DIR)/arch/arm64/boot/dts/ti/Makefile | awk '{print $$NF}' | grep -E "$(subst ti/,,$(KERNEL_DEVICETREE_PREFIX))" | sed 's|^|ti/|')
+KERNEL_DEVICETREE := $(shell echo "$(KERNEL_DEVICETREE)" | tr ' ' '\n' | sort -u)
 
 linux-dtbs:
 	@echo =====================================
