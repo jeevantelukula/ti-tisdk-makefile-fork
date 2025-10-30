@@ -1,7 +1,7 @@
 # Kernel DTB build targets
 
 KERNEL_DEVICETREE_UNFILTERED?=$(shell find $(LINUXKERNEL_INSTALL_DIR)/arch/arm/boot/dts -printf '%P\n' | grep -wE '($(KERNEL_DEVICETREE_PREFIX)).*.dts[o]?' | sed "s/dts/dtb/g" )
-KERNEL_DEVICETREE=$(filter-out .%,$(KERNEL_DEVICETREE_UNFILTERED))
+KERNEL_DEVICETREE=$(filter %.dtb %.dtbo,$(KERNEL_DEVICETREE_UNFILTERED))
 
 linux-dtbs:
 	@echo =====================================

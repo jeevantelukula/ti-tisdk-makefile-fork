@@ -24,4 +24,4 @@ export GCC_ARM_NONE_TOOLCHAIN=$(LINUX_DEVKIT_PATH)/sysroots/x86_64-arago-linux/u
 
 KERNEL_DEVICETREE_PREFIX=am437x-|am43x-
 
-MAKE_ALL_TARGETS?= pru-icss matrix-gui cryptodev secdev u-boot-legacy linux-legacy linux-legacy-dtbs refresh-screen image-gallery mmwavegesture-hmi evse-hmi
+MAKE_ALL_TARGETS?= cryptodev u-boot-legacy linux-legacy linux-legacy-dtbs

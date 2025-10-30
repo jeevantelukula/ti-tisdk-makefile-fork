@@ -18,4 +18,4 @@ export CC=$(CROSS_COMPILE)gcc --sysroot=$(SDK_PATH_TARGET)
 
 KERNEL_DEVICETREE_PREFIX=am437x-|am43x-
 
-MAKE_ALL_TARGETS?= pru-icss matrix-gui cryptodev u-boot-legacy linux-legacy linux-legacy-dtbs refresh-screen image-gallery mmwavegesture-hmi evse-hmi
+MAKE_ALL_TARGETS?= cryptodev u-boot-legacy linux-legacy linux-legacy-dtbs

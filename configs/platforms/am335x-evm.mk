@@ -17,4 +17,4 @@ export CC=$(CROSS_COMPILE)gcc --sysroot=$(SDK_PATH_TARGET)
 
 KERNEL_DEVICETREE_PREFIX=am335x-
 
-MAKE_ALL_TARGETS?= pru-icss matrix-gui cryptodev u-boot-legacy linux-legacy linux-legacy-dtbs refresh-screen mmwavegesture-hmi evse-hmi protection-relays-hmi
+MAKE_ALL_TARGETS?= cryptodev u-boot-legacy linux-legacy linux-legacy-dtbs
