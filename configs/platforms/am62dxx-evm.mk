@@ -24,5 +24,6 @@ KERNEL_DEVICETREE_PREFIX=ti/k3-am62d2|ti/k3-am62a7-sk-edgeai|ti/k3-am62a7-sk-rpi
 TI_LINUX_FIRMWARE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)
 UBOOT_ATF=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl31.bin
 UBOOT_TEE=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/bl32.bin
+TI_DM=$(TI_SDK_PATH)/board-support/prebuilt-images/$(PLATFORM)/ti-dm/am62dxx/ipc_echo_testb_mcu1_0_release_strip.xer5f
 
 MAKE_ALL_TARGETS?= cryptodev arm-benchmarks u-boot linux linux-dtbs
